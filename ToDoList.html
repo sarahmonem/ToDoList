@@ -1,0 +1,274 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        p {
+            font-family: 'Permanent Marker', cursive;
+        }
+
+
+        .heading {
+            text-align: center;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        #list {
+            width: 100%;
+        }
+
+        @keyframes move {
+            0%  {
+                right: 50px;
+            }
+
+           100% {
+                right: 0px;
+            }
+        }
+
+        #list .task {
+            background: #ededed;
+            padding: 15px 10px;
+            display: flex;
+            margin: 10px 0;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px #272727;
+            border-top: 6px solid #9268b9;
+            position: relative;
+            animation-name: move;
+            animation-duration: 1.5s;
+        }
+
+
+        #list i {
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        form {
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        form .add {
+            padding: 0 20px;
+            background: #9268b9;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #input-text {
+            border: 1px solid #bdbdbd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #input-text:focus-visible {
+            border: 1px solid #c6c6c6;
+
+            outline: none;
+        }
+
+        .input-form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: #ebebeb;
+            padding: 10px 0;
+            /* align-items: center; */
+            border-radius: 10px;
+        }
+
+        .task i p {
+            padding-left: 5px;
+        }
+
+
+        .delete {
+            cursor: pointer;
+            border: none;
+            padding: 5px;
+            color: #fff;
+            background: #ff6161;
+            border-radius: 5px;
+        }
+
+        .wrapper {
+            background-image: url(https://images.pexels.com/photos/6690924/pexels-photo-6690924.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+            background-blend-mode: overlay;
+            background-color: #343434;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+        }
+
+        .menu-icon {
+            position: fixed;
+            top: 0;
+            background: #fdfdfdb8;
+            padding: 20px;
+            display: block;
+            opacity: 1;
+
+        }
+
+        .menu-icon i {
+            color: #9268b9;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            height: 100%;
+            background: #a5a5a5ad;
+            left: -200;
+            width: 200px;
+            transition: all .8s ease;
+
+
+        }
+
+        .colse i {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 11px;
+            background: #ededed;
+            color: #6b6b6b;
+            display: block;
+        }
+
+        /*****/
+        .colors {
+            padding: 0;
+            margin: 15px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .colors li {
+
+            list-style: none;
+            margin: 5px;
+            cursor: pointer;
+            opacity: 0.5;
+            padding: 15px;
+        }
+
+        .colors li.active,
+        .colors li:hover {
+            opacity: 1;
+        }
+
+        .colors li:nth-child(1) {
+            background-color: red;
+
+        }
+
+        .colors li:nth-child(2) {
+            background-color: green;
+
+        }
+
+        .colors li:nth-child(3) {
+            background-color: chocolate;
+
+        }
+
+        .colors li:nth-child(4) {
+            background-color: blue;
+
+        }
+
+        .colors li:nth-child(5) {
+            background-color: violet;
+
+        }
+
+        .colors li:nth-child(6) {
+            background-color: yellowgreen;
+
+        }
+
+        .menu-heading {
+            color: white;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h2 class="heading">TO DO LIST</h2>
+            <div class="input-form">
+                <form action="" onsubmit="addTask(event)">
+                    <input type="text" id="input-text">
+                    <button type="submit" class="add">Add</button>
+                </form>
+            </div>
+            <div id="list">
+
+
+            </div>
+        </div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu">
+
+            <div>
+                <p class="menu-heading">choose your theme</p>
+                <ul class="colors">
+                    <li data-color="red" class="active"></li>
+                    <li data-color="green"></li>
+                    <li data-color="chocolate"></li>
+                    <li data-color="blue"></li>
+                    <li data-color="violet"></li>
+                    <li data-color="yellowgreen"></li>
+                </ul>
+            </div>
+            <div class="colse">
+                <i class="fas fa-times colse-icon"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="todolist.js"></script>
+</body>
+
+</html>
